@@ -40,11 +40,11 @@ namespace GMS_Explorer
 		public Bitmap GetPage()
 		{
 			Bitmap source = TXTR.Instance.GetBitmap(sheetID);
-			Bitmap dest = new Bitmap(boundingBox.Width, boundingBox.Height);
+			Bitmap dest = new Bitmap(sourceRect.Width, sourceRect.Height);
 
 			using (Graphics g = Graphics.FromImage(dest))
 			{
-				g.DrawImage(source, renderX, renderY, sourceRect, GraphicsUnit.Pixel);
+				g.DrawImage(source, new Rectangle(Point.Empty, sourceRect.Size), sourceRect, GraphicsUnit.Pixel);
 			}
 
 			return dest;
